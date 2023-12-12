@@ -19,6 +19,14 @@
   font-size: 1.2rem;
 }
 
+.link:hover {
+  color: var(--textHoverColor);
+}
+
+.link:active {
+  color: var(--textHoverColor);
+}
+
 @media screen and (max-width: 1280px) {
   .logo {
     font-size: 1.2rem;

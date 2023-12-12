@@ -23,10 +23,13 @@ type ThemeContextProviderProps = {
 
 const getInitialTheme = () => {
     if (typeof window !== 'undefined') {
+        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const storedTheme = localStorage.getItem('theme') as Theme;
-        return storedTheme || 'light';
+    return storedTheme ?? (prefersDarkMode ? 'dark' : 'light');
     }
+
 }
+
 export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ children }) => {
     const [mounted, setMounted] = useState(false);
     const [theme, setTheme] = useState<Theme>(() => getInitialTheme()!);
